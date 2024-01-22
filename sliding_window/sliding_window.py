@@ -39,8 +39,8 @@ The sliding window technique is valued for its simplicity, efficiency, and the a
 """
 Given an array, find the average of all contiguous sub-arrays of size ‘target’ in it.
 Here, we are asked to find the average of all contiguous sub-arrays of size ‘5’ in the given array. Let’s solve this:
-For the first 5 numbers (subarray from index 0-4), the average is: 
-For the next 5 numbers (subarray from index 2-6), the average is: 
+For the first 5 numbers (sub-array from index 0-4), the average is: 
+For the next 5 numbers (sub-array from index 2-6), the average is: 
 
 Here is the final output containing the averages of all contiguous sub-arrays of size 5:
 Array: [1, 3, 2, 6, -1, 4, 1, 8, 2], target=5
@@ -112,7 +112,9 @@ def get_counted_negatives_per_target(numbers: List[int], target: int) -> List[in
         if len(window_numbers) == target + 1:
             count_negatives = count_negative_numbers(window_numbers)
             negative_numbers.append(count_negatives)
-            window_numbers.pop(start)
+            del window_numbers[start]
+            # window_numbers.remove(window_numbers[start])
+            # window_numbers.pop(start)
             start += 1
     return negative_numbers
 
@@ -139,18 +141,27 @@ def count_letter_sequence(word: str) -> str:
 
 # longest consonants
 def longest_string_no_vowel(word: str) -> str:
-    result = ""
-    max_result = ""
-    if not word:
-        return None
+    if word == "": return None
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    results = ''
     for i in range(len(word)):
-        if word[i] not in get_vowels():
-            result += word[i]
-            if len(result) > len(max_result):
-                max_result = result
+        if word[i] not in vowels:
+            results += word[i]
         else:
-            result = ""
-    return max_result
+            results = ''
+    return results
+    # result = ""
+    # max_result = ""
+    # if not word:
+    #     return None
+    # for i in range(len(word)):
+    #     if word[i] not in get_vowels():
+    #         result += word[i]
+    #         if len(result) > len(max_result):
+    #             max_result = result
+    #     else:
+    #         result = ""
+    # return max_result
 
 
 def get_vowels() -> List[str]:
@@ -205,7 +216,7 @@ def smallest_sub_array_equal_target(numbers=None, target=None) -> int:
 
 
 """
-Difference between the maximum and minimum average of all k-length continuous subarrays
+Difference between the maximum and minimum average of all k-length continuous sub-arrays
 Input: arr[ ] = {3, 8, 9, 15}, K = 2
 Output: 6.5
 Explanation: All sub arrays of length 2 are {3, 8}, {8, 9}, {9, 15} 
@@ -214,7 +225,7 @@ and their averages are (3+8)/2 = 5.5, (8+9)/2 = 8.5, and (9+15)/2 = 12.0 respect
 Therefore, the difference between the maximum(=12.0) and minimum(=5.5) is 12.0 -5.5 = 6.5.
 
 THE FUNCTION BENEATH FINDS DIFFERENCE BETWEEN 
-THE SUM OF MAXIMUM AND MINMAX VALUES
+THE SUM OF MAXIMUM AND MIN-MAX VALUES
 """
 
 
@@ -301,14 +312,14 @@ when you have to pick from a third fruit type.
 This problem follows the Sliding Window pattern and is quite 
 similar to Longest Substring with K Distinct Characters. 
 In this problem, we need to find the length of the longest 
-subarray with no more than two distinct characters (or fruit types!). 
+sub-array with no more than two distinct characters (or fruit types!). 
 This transforms the current problem into Longest Substring with
 K Distinct Characters where K=2.
 ========  SAMPLE ======
 
 Input: Fruit=['A', 'B', 'C', 'A', 'C']
 Output: 3
-Explanation: We can put 2 'C' in one basket and one 'A' in the other from the subarray ['C', 'A', 'C']
+Explanation: We can put 2 'C' in one basket and one 'A' in the other from the sub-array ['C', 'A', 'C']
 
 Input: Fruit=['A', 'B', 'C', 'B', 'B', 'C']
 Output: 5
