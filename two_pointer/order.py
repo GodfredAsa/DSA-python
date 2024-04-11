@@ -3,8 +3,8 @@ class OrderProcessor:
         self.payment_processor = payment_processor
         self.shipping_processor = shipping_processor
 
-    def process_order(self, amount):
-        self.payment_processor.process_payment(amount)
+    def process_order(self, order: 'Order'):
+        self.payment_processor.process_payment(order.amount)
         self.shipping_processor.ship_order(order)
 
 class PaymentProcessor:

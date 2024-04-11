@@ -346,3 +346,21 @@ def fruits_into_basket(fruits: list):
             start += 1
         max_length = max(max_length, i - start + 1)
     return max_length
+
+    """
+    Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.
+
+Example
+
+For inputArray = [3, 6, -2, -5, 7, 3], the output should be
+solution(inputArray) = 21.
+
+7 and 3 produce the largest product.
+    """
+def solution(input_array):
+
+    max_product = input_array[0] * input_array[1]
+    for i in range(1, len(input_array) - 1):
+        current_product = input_array[i] * input_array[i + 1]
+        max_product = max(max_product, current_product)
+    return max_product
