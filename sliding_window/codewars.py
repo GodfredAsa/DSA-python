@@ -35,19 +35,6 @@ You can achieve this by first extracting the odd numbers from the array,
 """
 
 
-def sort_array(source_array):
-    # Extract odd numbers from the array and sort them
-    odd_numbers = sorted([num for num in source_array if num % 2 != 0])
-    # Replace odd numbers in the original array with sorted odd numbers
-    index = 0
-    for i in range(len(source_array)):
-        if source_array[i] % 2 != 0:
-            source_array[i] = odd_numbers[index]
-            index += 1
-
-    return source_array
-
-
 def sort_array(nums):
     odd_numbers = sorted([x for x in nums if x % 2 != 0]) # sorted odd numbers 
     return [x if x % 2 == 0 else odd_numbers.pop(0) for x in nums]
@@ -92,16 +79,6 @@ Examples
 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
 """
-
-# def digital_root(n):
-#     if n < 10:
-#         return n
-    
-#     # Calculate the sum of digits
-#     sum_of_digits = sum(int(digit) for digit in str(n))
-    
-#     # Recursive call to calculate digital root of the sum of digits
-#     return digital_root(sum_of_digits)
 
 def digital_root(n):
 	return n % 9 or n and 9 
@@ -167,14 +144,189 @@ total_cost = sum([ x['price'] * x['quantity'] for x in data  ])
 
 print(total_cost)
 
-import requests 
+# import requests 
 
-def fetch_data_calculate_total_costs(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        total_cost = sum([ x['price'] * x['quantity'] for x in data  ])
-        return {'total_cost': total_cost}
-    else:
-        return 'Could not fetch the requested url '
+# def fetch_data_calculate_total_costs(url):
+#     response = requests.get(url)
+#     if response.status_code == 200:
+#         data = response.json()
+#         total_cost = sum([ x['price'] * x['quantity'] for x in data  ])
+#         return {'total_cost': total_cost}
+#     else:
+#         return 'Could not fetch the requested url '
 
+
+USER_ROLES = [
+            {
+                "id": 10,
+                "name": "borga_create_employee",
+                "description": "",
+                "created": "2023-08-15T10:10:13.584407",
+                "updated": "2023-08-15T10:10:13.584416"
+            },
+            {
+                "id": 13,
+                "name": "borga_update_delivery_account",
+                "description": "",
+                "created": "2023-08-15T10:10:13.587084",
+                "updated": "2023-08-15T10:10:13.587094"
+            },
+            {
+                "id": 8,
+                "name": "borga_update_employee",
+                "description": "",
+                "created": "2023-08-15T10:10:13.582775",
+                "updated": "2023-08-15T10:10:13.582785"
+            },
+            {
+                "id": 6,
+                "name": "borga_manage_deliveries",
+                "description": "",
+                "created": "2023-08-15T10:10:13.581038",
+                "updated": "2023-08-15T10:10:13.581048"
+            },
+            {
+                "id": 14,
+                "name": "borga_update_merchant",
+                "description": "",
+                "created": "2023-08-15T10:10:13.588192",
+                "updated": "2023-08-15T10:10:13.588201"
+            },
+            {
+                "id": 9,
+                "name": "borga_manage_orders",
+                "description": "",
+                "created": "2023-08-15T10:10:13.583591",
+                "updated": "2023-08-15T10:10:13.5836"
+            },
+            {
+                "id": 12,
+                "name": "borga_dispute_resolution",
+                "description": "",
+                "created": "2023-08-15T10:10:13.586229",
+                "updated": "2023-08-15T10:10:13.586239"
+            },
+            {
+                "id": 1,
+                "name": "borga_create_merchant",
+                "description": "",
+                "created": "2023-08-15T10:10:13.576729",
+                "updated": "2023-08-15T10:10:13.576747"
+            },
+            {
+                "id": 4,
+                "name": "borga_view_audit_trail",
+                "description": "",
+                "created": "2023-08-15T10:10:13.579521",
+                "updated": "2023-08-15T10:10:13.579531"
+            },
+            {
+                "id": 5,
+                "name": "borga_view_transactions",
+                "description": "",
+                "created": "2023-08-15T10:10:13.580296",
+                "updated": "2023-08-15T10:10:13.580307"
+            },
+            {
+                "id": 3,
+                "name": "borga_update_admin",
+                "description": "",
+                "created": "2023-08-15T10:10:13.578811",
+                "updated": "2023-08-15T10:10:13.57882"
+            },
+            {
+                "id": 11,
+                "name": "default-roles-borga-dev",
+                "description": "${role_default-roles}",
+                "created": "2023-08-15T10:10:13.585219",
+                "updated": "2023-08-15T10:10:13.585228"
+            },
+            {
+                "id": 7,
+                "name": "borga_set_forex_rate",
+                "description": "",
+                "created": "2023-08-15T10:10:13.581944",
+                "updated": "2023-08-15T10:10:13.581954"
+            },
+            {
+                "id": 15,
+                "name": "borga_create_delivery_account",
+                "description": "",
+                "created": "2023-08-15T10:10:13.589391",
+                "updated": "2023-08-15T10:10:13.5894"
+            },
+            {
+                "id": 2,
+                "name": "borga_reporting",
+                "description": "",
+                "created": "2023-08-15T10:10:13.577884",
+                "updated": "2023-08-15T10:10:13.577896"
+            }
+        ]
+
+from typing import List
+def is_user_authorize_by_role(roles: List[str], role: str) -> bool:
+    return True if role == "SUPERADMIN" else role in roles
+
+
+roles = [role['name'] for role in USER_ROLES]
+
+print("User has role: " + str(is_user_authorize_by_role(roles, "SUPERADMIN")))
+
+
+#  ==========    USER ROLES SIMPLIFIED IN KOTLIN    ==========
+""" 
+IMPLEMENTATION STRATEGY
+1. Get the user by Id and extract his roles into an array of role names
+2. make comparison if the explicit role in question is in the user's roles
+3. Also checks if the user has the superior role then return True and and enable access to all resources 
+4. If True enable access to the resource or collection in question else restrict and throw appropriate response.
+
+
+SUMMARY OR SIMPLIFICATION STRATEGY 
+1. Get roles of user 
+"""
+
+
+
+
+# import java.time.LocalDateTime
+
+# data class UserRole(
+#     val id: Int,
+#     val name: String,
+#     val description: String,
+#     val created: LocalDateTime,
+#     val updated: LocalDateTime
+# )
+
+# fun isUserAuthorizedByRole(roles: List<String>, role: String): Boolean {
+#     return when (role) {
+#         "SUPERADMIN" -> true
+#         else -> role in roles
+#     }
+# }
+
+# fun main() {
+#     val userRoles = listOf(
+#         UserRole(10, "borga_create_employee", "", LocalDateTime.parse("2023-08-15T10:10:13.584407"), LocalDateTime.parse("2023-08-15T10:10:13.584416")),
+#         UserRole(13, "borga_update_delivery_account", "", LocalDateTime.parse("2023-08-15T10:10:13.587084"), LocalDateTime.parse("2023-08-15T10:10:13.587094")),
+#         UserRole(8, "borga_update_employee", "", LocalDateTime.parse("2023-08-15T10:10:13.582775"), LocalDateTime.parse("2023-08-15T10:10:13.582785")),
+#         UserRole(6, "borga_manage_deliveries", "", LocalDateTime.parse("2023-08-15T10:10:13.581038"), LocalDateTime.parse("2023-08-15T10:10:13.581048")),
+#         UserRole(14, "borga_update_merchant", "", LocalDateTime.parse("2023-08-15T10:10:13.588192"), LocalDateTime.parse("2023-08-15T10:10:13.588201")),
+#         UserRole(9, "borga_manage_orders", "", LocalDateTime.parse("2023-08-15T10:10:13.583591"), LocalDateTime.parse("2023-08-15T10:10:13.5836")),
+#         UserRole(12, "borga_dispute_resolution", "", LocalDateTime.parse("2023-08-15T10:10:13.586229"), LocalDateTime.parse("2023-08-15T10:10:13.586239")),
+#         UserRole(1, "borga_create_merchant", "", LocalDateTime.parse("2023-08-15T10:10:13.576729"), LocalDateTime.parse("2023-08-15T10:10:13.576747")),
+#         UserRole(4, "borga_view_audit_trail", "", LocalDateTime.parse("2023-08-15T10:10:13.579521"), LocalDateTime.parse("2023-08-15T10:10:13.579531")),
+#         UserRole(5, "borga_view_transactions", "", LocalDateTime.parse("2023-08-15T10:10:13.580296"), LocalDateTime.parse("2023-08-15T10:10:13.580307")),
+#         UserRole(3, "borga_update_admin", "", LocalDateTime.parse("2023-08-15T10:10:13.578811"), LocalDateTime.parse("2023-08-15T10:10:13.57882")),
+#         UserRole(11, "default-roles-borga-dev", "\${role_default-roles}", LocalDateTime.parse("2023-08-15T10:10:13.585219"), LocalDateTime.parse("2023-08-15T10:10:13.585228")),
+#         UserRole(7, "borga_set_forex_rate", "", LocalDateTime.parse("2023-08-15T10:10:13.581944"), LocalDateTime.parse("2023-08-15T10:10:13.581954")),
+#         UserRole(15, "borga_create_delivery_account", "", LocalDateTime.parse("2023-08-15T10:10:13.589391"), LocalDateTime.parse("2023-08-15T10:10:13.5894")),
+#         UserRole(2, "borga_reporting", "", LocalDateTime.parse("2023-08-15T10:10:13.577884"), LocalDateTime.parse("2023-08-15T10:10:13.577896"))
+#     )
+
+#     val roles = userRoles.map { it.name }
+
+#     println("User has role: ${isUserAuthorizedByRole(roles, "SUPERADMIN")}")
+# }

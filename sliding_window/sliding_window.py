@@ -1,6 +1,8 @@
 from typing import List, Set
 import math
 
+
+# COMMAND FOR RUNNING THE TESTS: pytest test_sliding_window.py
 """
 The concept of a sliding window is a technique commonly used in computer science and algorithms to process or analyze elements in a sequence, such as an array or a string. It involves selecting a fixed-size subset or window of elements from the sequence and moving that window through the sequence one step at a time, often in a sequential manner.
 
@@ -47,19 +49,6 @@ Array: [1, 3, 2, 6, -1, 4, 1, 8, 2], target=5
 Output: [2.2, 2.8, 2.4, 3.6, 2.8]
 """
 
-
-# def average_contiguous_sub_arrays_with_target(arrays: List[int], target: int):
-#     window_sum = 0
-#     start = 0
-#     contiguous_averages = []
-
-#     for i in range(len(arrays)):
-#         window_sum += arrays[i]
-#         if i >= target - 1:  # i starts from zero hence the reduction of 1 from target
-#             contiguous_averages.append(window_sum / target)
-#             window_sum -= arrays[start]
-#             start += 1
-#     return contiguous_averages
 
 def average_contiguous_sub_arrays_with_target(arrays: List[int], target: int):
     start, window_sum = 0, 0
@@ -141,27 +130,16 @@ def count_letter_sequence(word: str) -> str:
 
 # longest consonants
 def longest_string_no_vowel(word: str) -> str:
-    if word == "": return None
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    results = ''
-    for i in range(len(word)):
-        if word[i] not in vowels:
-            results += word[i]
+    if word == "":
+        return None
+    vowels = ["a", "e", "i", "o", "u"]
+    results = ""
+    for letter in word:
+        if letter not in vowels:
+            results += letter
         else:
-            results = ''
+            results = ""
     return results
-    # result = ""
-    # max_result = ""
-    # if not word:
-    #     return None
-    # for i in range(len(word)):
-    #     if word[i] not in get_vowels():
-    #         result += word[i]
-    #         if len(result) > len(max_result):
-    #             max_result = result
-    #     else:
-    #         result = ""
-    # return max_result
 
 
 def get_vowels() -> List[str]:
@@ -171,7 +149,7 @@ def get_vowels() -> List[str]:
 # is duplicate number
 
 
-def find_duplicate(numbers: List[int], target: int) -> bool:
+def is_duplicate(numbers: List[int], target: int) -> bool:
     return numbers.count(target) > 1
 
 
@@ -256,14 +234,15 @@ def perfect_number(number: int) -> bool:
 
 
 def find_middle_number(numbers: List[int]) -> int:
-    if len(numbers) % 2 != 0:
-        return numbers[len(numbers) // 2]
-    return (numbers[len(numbers) // 2] + numbers[len(numbers) // 2 - 1]) / 2
+    DIVIDING_NUM = 2
+    if len(numbers) % DIVIDING_NUM != 0:
+        return numbers[len(numbers) // DIVIDING_NUM]
+    return (numbers[len(numbers) // 2] + numbers[len(numbers) // DIVIDING_NUM - 1]) / DIVIDING_NUM
 
 
 def get_last_digits(number: int, digit_size: int) -> List[int]:
     num_str = str(number)
-    return [int(x) for x in num_str[len(num_str) - digit_size :]]
+    return [int(x) for x in num_str[len(num_str) - digit_size : ]]
 
 
 # number of pairs
@@ -282,8 +261,8 @@ def count_negatives(numbers: List[int], target: int) -> List[int]:
     for i in range(len(numbers)):
         window_el.append(numbers[i])
         if len(window_el) == target + 1:
-            nega = len(list(filter(lambda x: x < 0, window_el)))
-            negatives.append(nega)
+            n = len(list(filter(lambda x: x < 0, window_el)))
+            negatives.append(n)
             window_el.pop(start)
             start += 1
     return negatives
@@ -357,10 +336,13 @@ solution(inputArray) = 21.
 
 7 and 3 produce the largest product.
     """
-def solution(input_array):
 
-    max_product = input_array[0] * input_array[1]
-    for i in range(1, len(input_array) - 1):
-        current_product = input_array[i] * input_array[i + 1]
-        max_product = max(max_product, current_product)
-    return max_product
+
+def find_two_max_product(nums) -> int:
+    if len(nums) <= 1 or nums == None:
+        return 0
+    max_pro = nums[0] * nums[1]
+    for index in range(1, len(nums)-1):
+      current_pro = nums[index] * nums[index + 1]
+      max_pro = max(max_pro, current_pro)
+    return max_pro

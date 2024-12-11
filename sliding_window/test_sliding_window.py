@@ -4,13 +4,14 @@ from sliding_window.sliding_window import (
     count_negative_numbers,
     find_factorial,
     find_middle_number,
+    find_two_max_product,
     get_counted_negatives_per_target,
     count_letter_sequence,
     collectDuplicates,
     fruits_into_basket,
     get_last_digits,
     longest_string_no_vowel,
-    find_duplicate,
+    is_duplicate,
     find_max_sum,
     perfect_number,
     smallest_sub_array_equal_target,
@@ -50,8 +51,8 @@ def test_longest_string_no_vowel() -> None:
 
 
 def test_find_duplicate() -> None:
-    assert find_duplicate([5, 6, 8, 2, 4, 6, 9], 2) == False
-    assert find_duplicate([5, 6, 8, 2, 4, 6, 9], 6) == True
+    assert is_duplicate([5, 6, 8, 2, 4, 6, 9], 2) == False
+    assert is_duplicate([5, 6, 8, 2, 4, 6, 9], 6) == True
 
 
 def test_find_max_sum() -> None:
@@ -75,7 +76,7 @@ def test_find_min_max_diff() -> None:
 def test_perfect_number() -> None:
     assert perfect_number(22) == True
     assert perfect_number(220) == False
-    # assert perfect_number(0) == False
+    assert perfect_number(0) == False
 
 
 def test_find_middle_number() -> None:
@@ -101,3 +102,6 @@ def test_fruits_in_basket() -> None:
     assert fruits_into_basket(["A", "B", "C", "A", "C"]) == 3
     assert fruits_into_basket(["B", "C", "B", "B", "C"]) == 5
 
+def test_find_two_max_product() -> None:
+    assert find_two_max_product([3, 6, -2, -5, 7, 3]) == 21
+    assert find_two_max_product([ 3]) == 0
