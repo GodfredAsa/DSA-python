@@ -209,11 +209,11 @@ def advancedTwoSum(nums: List[int], target: int) -> List[int]:
 print(f"Two Sum: {advancedTwoSum([12,-10, -2, 7, 4], target=5)}")
 
 def is_prime(num):
-    for n in range(2,int(num**0.5)+1):
-        if num % n == 0:
-            return False
-    return True
+    for n in range(2, int(num**0.5)+1):
+        return False if num % n == 0 else True
 
+
+print(f"Is prime {is_prime(12)}")
 
 def generate_fibonacci(n):
     fib_sequence = [0, 1]

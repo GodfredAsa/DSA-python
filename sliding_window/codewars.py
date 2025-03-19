@@ -67,7 +67,7 @@ def int_to_roman(num):
 
     return result
 
-
+print(int_to_roman(3))
 """ 
 Given n, take the sum of the digits of n. If that value has more than one digit, 
 continue reducing in this way until a single-digit number is produced. 
@@ -286,47 +286,22 @@ IMPLEMENTATION STRATEGY
 SUMMARY OR SIMPLIFICATION STRATEGY 
 1. Get roles of user 
 """
+from typing import List
+
+def find_duplex(nums: List[int], target: int) -> List[List[int]]:
+    nums.sort()
+    results = []
+
+    end_index = len(nums) - 1
+
+    for i in range(len(nums)):
+        if nums[i] + nums[end_index] == target:
+            results.append([nums[i], nums[end_index]])
+        elif nums[i] + nums[end_index] > target:
+            end_index -= 1
+        else:
+            i += 1
+    return results
 
 
-
-
-# import java.time.LocalDateTime
-
-# data class UserRole(
-#     val id: Int,
-#     val name: String,
-#     val description: String,
-#     val created: LocalDateTime,
-#     val updated: LocalDateTime
-# )
-
-# fun isUserAuthorizedByRole(roles: List<String>, role: String): Boolean {
-#     return when (role) {
-#         "SUPERADMIN" -> true
-#         else -> role in roles
-#     }
-# }
-
-# fun main() {
-#     val userRoles = listOf(
-#         UserRole(10, "borga_create_employee", "", LocalDateTime.parse("2023-08-15T10:10:13.584407"), LocalDateTime.parse("2023-08-15T10:10:13.584416")),
-#         UserRole(13, "borga_update_delivery_account", "", LocalDateTime.parse("2023-08-15T10:10:13.587084"), LocalDateTime.parse("2023-08-15T10:10:13.587094")),
-#         UserRole(8, "borga_update_employee", "", LocalDateTime.parse("2023-08-15T10:10:13.582775"), LocalDateTime.parse("2023-08-15T10:10:13.582785")),
-#         UserRole(6, "borga_manage_deliveries", "", LocalDateTime.parse("2023-08-15T10:10:13.581038"), LocalDateTime.parse("2023-08-15T10:10:13.581048")),
-#         UserRole(14, "borga_update_merchant", "", LocalDateTime.parse("2023-08-15T10:10:13.588192"), LocalDateTime.parse("2023-08-15T10:10:13.588201")),
-#         UserRole(9, "borga_manage_orders", "", LocalDateTime.parse("2023-08-15T10:10:13.583591"), LocalDateTime.parse("2023-08-15T10:10:13.5836")),
-#         UserRole(12, "borga_dispute_resolution", "", LocalDateTime.parse("2023-08-15T10:10:13.586229"), LocalDateTime.parse("2023-08-15T10:10:13.586239")),
-#         UserRole(1, "borga_create_merchant", "", LocalDateTime.parse("2023-08-15T10:10:13.576729"), LocalDateTime.parse("2023-08-15T10:10:13.576747")),
-#         UserRole(4, "borga_view_audit_trail", "", LocalDateTime.parse("2023-08-15T10:10:13.579521"), LocalDateTime.parse("2023-08-15T10:10:13.579531")),
-#         UserRole(5, "borga_view_transactions", "", LocalDateTime.parse("2023-08-15T10:10:13.580296"), LocalDateTime.parse("2023-08-15T10:10:13.580307")),
-#         UserRole(3, "borga_update_admin", "", LocalDateTime.parse("2023-08-15T10:10:13.578811"), LocalDateTime.parse("2023-08-15T10:10:13.57882")),
-#         UserRole(11, "default-roles-borga-dev", "\${role_default-roles}", LocalDateTime.parse("2023-08-15T10:10:13.585219"), LocalDateTime.parse("2023-08-15T10:10:13.585228")),
-#         UserRole(7, "borga_set_forex_rate", "", LocalDateTime.parse("2023-08-15T10:10:13.581944"), LocalDateTime.parse("2023-08-15T10:10:13.581954")),
-#         UserRole(15, "borga_create_delivery_account", "", LocalDateTime.parse("2023-08-15T10:10:13.589391"), LocalDateTime.parse("2023-08-15T10:10:13.5894")),
-#         UserRole(2, "borga_reporting", "", LocalDateTime.parse("2023-08-15T10:10:13.577884"), LocalDateTime.parse("2023-08-15T10:10:13.577896"))
-#     )
-
-#     val roles = userRoles.map { it.name }
-
-#     println("User has role: ${isUserAuthorizedByRole(roles, "SUPERADMIN")}")
-# }
+print(find_duplex([1, 2, -3, 4, -2, -1, 0], 3))

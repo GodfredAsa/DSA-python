@@ -13,9 +13,11 @@ from sliding_window.sliding_window import (
     longest_string_no_vowel,
     is_duplicate,
     find_max_sum,
-    perfect_number,
+    isPerfectNumber,
     smallest_sub_array_equal_target,
     find_min_max_diff,
+    digit_root,
+    find_middle_number
 )
 
 
@@ -74,9 +76,9 @@ def test_find_min_max_diff() -> None:
 
 
 def test_perfect_number() -> None:
-    assert perfect_number(22) == True
-    assert perfect_number(220) == False
-    assert perfect_number(0) == False
+    assert isPerfectNumber(22) == False
+    assert isPerfectNumber(6) == True
+    assert isPerfectNumber(28) == True
 
 
 def test_find_middle_number() -> None:
@@ -105,3 +107,18 @@ def test_fruits_in_basket() -> None:
 def test_find_two_max_product() -> None:
     assert find_two_max_product([3, 6, -2, -5, 7, 3]) == 21
     assert find_two_max_product([ 3]) == 0
+
+def test_digit_root() -> None:
+    assert digit_root(16) == 7
+    assert digit_root(942) == 6
+    assert digit_root(132189) == 6
+    assert digit_root(493193) == 2
+    assert digit_root(9) == 9
+    
+
+def test_find_middle_number():
+    assert find_middle_number([1,2,3,4,5]) == 3
+    assert find_middle_number([1, 2]) == 1.5
+    assert find_middle_number([1,2,3,4,5,6,7]) == 4
+    assert find_middle_number([1,2,3,4,5,6,7,8]) == 4.5
+

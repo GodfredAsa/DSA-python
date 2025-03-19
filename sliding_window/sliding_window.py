@@ -154,8 +154,8 @@ def is_duplicate(numbers: List[int], target: int) -> bool:
 
 
 def find_max_sum(numbers: List[int], target: int) -> int:
-    if numbers is None or target is None:
-        return None
+    # if numbers is None or target is None:
+    #     return None
     max_value = 0
     start = 0
     window_sum = 0
@@ -205,7 +205,7 @@ Therefore, the difference between the maximum(=12.0) and minimum(=5.5) is 12.0 -
 THE FUNCTION BENEATH FINDS DIFFERENCE BETWEEN 
 THE SUM OF MAXIMUM AND MIN-MAX VALUES
 """
-
+# HERE 
 
 def find_min_max_diff(numbers, target) -> float:
     start = 0
@@ -226,11 +226,17 @@ def find_min_max_diff(numbers, target) -> float:
     Example: 1) 131 ==> 131 [√]   2) 34  ==> 43 [x]
     """
 
+def getFactors(num: int) -> List[int]:
+    return [n for n in range(1, num) if num % n == 0 ]
 
-def perfect_number(number: int) -> bool:
-    if len(str(number)) <= 1:
-        return False
-    return int(str(number)[::-1]) == number
+print(getFactors(8128))
+
+# a perfect number is a number whose sum of factors equals the number itself.
+# 6 = [1,2,3] => 1 + 2 + 3 = 6. Hence 6 is a perfect number.
+# Example: 6=[1,2,3], 28, 496, 8128
+
+def isPerfectNumber(num: int) -> bool:
+    return sum(getFactors(num)) == num
 
 
 def find_middle_number(numbers: List[int]) -> int:
@@ -346,3 +352,33 @@ def find_two_max_product(nums) -> int:
       current_pro = nums[index] * nums[index + 1]
       max_pro = max(max_pro, current_pro)
     return max_pro
+
+
+def bubble_sort(nums: List[int]) -> List[int]:
+    n = len(nums)
+    for i in range(n):
+        is_sorted = True
+        for j in range(n - i - 1):
+            if nums[j] > nums[j+1]:
+                nums[j], nums[j+1] = nums[j+1], nums[j]
+                is_sorted = False 
+        if is_sorted:
+            break
+    return nums
+
+print(bubble_sort([8, 2, 90, -1, 6, 4, 5, 0, -2]))
+
+
+
+""" 
+Given n, take the sum of the digits of n. If that value has more than one digit, 
+continue reducing in this way until a single-digit number is produced. 
+The input will be a non-negative integer.
+Examples
+    16  -->  1 + 6 = 7
+   942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+493193  
+"""
+def digit_root(n) -> int:
+    return n if n <= 9 else n % 9
